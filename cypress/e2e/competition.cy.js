@@ -36,8 +36,8 @@ describe('Form Validation', () => {
     //cy.get('input[name="name"]').type('Konrad');
     cy.get('#name').type('Konrad');
     cy.get('#surname').type('Mamla');
-    cy.get('#email').type('misudju.cjad@gmail.com');
-    cy.get('#phone').type('730 060 158');
+    cy.get('#email').type('example@gmail.com');
+    cy.get('#phone').type('730 060 156');
 
     
     // Zaznacz wymagane zgody
