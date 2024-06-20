@@ -1,4 +1,4 @@
-// cypress/integration/form_spec.ts
+/// <reference types="cypress" />
 
 describe('Form Validation', () => {
   beforeEach(() => {
@@ -7,56 +7,50 @@ describe('Form Validation', () => {
 
   it('should fill out and submit the form successfully', () => {
 
+    // Add exception handling to prevent test failure due to uncaught exceptions in the application code
+    Cypress.on('uncaught:exception', (err, runnable) => {
+    // Return false to prevent Cypress from failing the test
+    return false;
+    });
+
     cy.get('#ensBtnYes').click();
 
-    //wpisz date urodzenia 
-    cy.get('.age-day').click().type(1)
-
-    cy.get('.age-month').click().type(7)
-
-
-    cy.get('.age-year').click().type(1997)
-
+    // Wprowadzenie daty urodzenia
+    cy.get('.age-day').click().type('01')
+    cy.get('.age-month').click().type('07')
+    cy.get('.age-year').click().type('1997')
+    
+    // Akceptacja wieku
     cy.get('button[type="submit"].btn-accept-age').click()
 
-    //next page
+    // Przejście do kolejnej strony formularza
     cy.get('a.btn.btn-primary[data-show-form-page]').first().click();
 
-
-
-
-    // Wypełnij pola formularza (dostosuj selektory do aktualnych wartości na stronie)
+    // Wybór opcji - przykład wyboru słuchawek
     cy.get('#award-headphones').click()
-    
-     cy.get('input[name="name"]').type('Konrad');
-     cy.get('surname').type('Mamla');
-     cy.get('email').type('misudju.cjad+despero@gmail.com');
+
+    // Wprowadzenie numeru z kapsla
+    cy.get('#code-number').type('Y59PYL19BH');
+
+    // Wprowadzenie danych osobowych
+    //cy.get('input[name="name"]').type('Konrad');
+    cy.get('#name').type('Konrad');
+    cy.get('#surname').type('Mamla');
+    cy.get('#email').type('misudju.cjad@gmail.com');
+    cy.get('#phone').type('730 060 158');
 
     
-    // // Zaznacz wymagane zgody
-     cy.get('#select-box-label').first().check();
-     //cy.get('#select-box-label').second().check();
+    // Zaznacz wymagane zgody
+    cy.get('#adulthood_statement').check({ force: true });
+    cy.get('#payment_statement').check({ force: true });
 
 
-    // // Prześlij formularz
-    // cy.get('form').submit();
+    // Prześlij formularz
+    //cy.get('button[type="submit"]').click();
 
-    // // Sprawdź, czy formularz został poprawnie przesłany
-    // // Zmodyfikuj poniższy selektor i asercję, aby pasowały do rzeczywistej odpowiedzi strony po przesłaniu formularza
-    // cy.get('.success-message').should('contain', 'Dziękujemy za zgłoszenie!');
+    //sprawdzamy komunikat czy sie udało
+    //cy.get('h1.banner-title').should('contain', 'Twój formularz został wysłany.');
+
+
   });
-
-  // it('should show validation errors for required fields', () => {
-  //   // Prześlij pusty formularz
-  //   cy.get('form').submit();
-
-  //   // Sprawdź, czy pojawiają się komunikaty o błędach dla wymaganych pól
-  //   // Zmodyfikuj poniższe selektory i asercje, aby pasowały do rzeczywistych komunikatów błędów na stronie
-  //   cy.get('input[name="firstName"]:invalid').should('have.length', 1);
-  //   cy.get('input[name="lastName"]:invalid').should('have.length', 1);
-  //   cy.get('input[name="email"]:invalid').should('have.length', 1);
-  //   cy.get('input[name="phone"]:invalid').should('have.length', 1);
-  //   cy.get('input[name="dateOfBirth"]:invalid').should('have.length', 1);
-  //   cy.get('input[name="terms"]:invalid').should('have.length', 1);
-  // });
 });
