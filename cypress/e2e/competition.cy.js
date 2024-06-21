@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { testData } from "../support/data/testData";
+
 describe('Form Validation', () => {
   beforeEach(() => {
     cy.visit('https://promo.desperados.com/form.html');
@@ -15,42 +17,37 @@ describe('Form Validation', () => {
 
     cy.get('#ensBtnYes').click();
 
-    // Wprowadzenie daty urodzenia
-    cy.get('.age-day').click().type('01')
-    cy.get('.age-month').click().type('07')
-    cy.get('.age-year').click().type('1997')
+    // Enter birth date
+    cy.get('.age-day').click().type(testData.birthDate.day);
+    cy.get('.age-month').click().type(testData.birthDate.month);
+    cy.get('.age-year').click().type(testData.birthDate.year);
     
-    // Akceptacja wieku
+    // Accept age
     cy.get('button[type="submit"].btn-accept-age').click()
 
-    // Przejście do kolejnej strony formularza
+    // Navigate to the next page of the form
     cy.get('a.btn.btn-primary[data-show-form-page]').first().click();
 
-    // Wybór opcji - przykład wyboru słuchawek
+    // Select an option - example selecting headphones
     cy.get('#award-headphones').click()
 
-    // Wprowadzenie numeru z kapsla
-    cy.get('#code-number').type('Y59PYL19BH');
+    // Enter cap number
+    cy.get('#code-number').type(testData.capNumber);
 
-    // Wprowadzenie danych osobowych
-    //cy.get('input[name="name"]').type('Konrad');
-    cy.get('#name').type('Konrad');
-    cy.get('#surname').type('Mamla');
-    cy.get('#email').type('example@gmail.com');
-    cy.get('#phone').type('730 060 156');
+    // Enter personal details
+    cy.get('#name').type(testData.personalDetails.firstName);
+    cy.get('#surname').type(testData.personalDetails.lastName);
+    cy.get('#email').type(testData.personalDetails.email);
+    cy.get('#phone').type(testData.personalDetails.phone);
 
-    
-    // Zaznacz wymagane zgody
+    // Check required consents
     cy.get('#adulthood_statement').check({ force: true });
     cy.get('#payment_statement').check({ force: true });
 
-
-    // Prześlij formularz
+    // Submit the form
     //cy.get('button[type="submit"]').click();
 
-    //sprawdzamy komunikat czy sie udało
+    // Verify success message
     //cy.get('h1.banner-title').should('contain', 'Twój formularz został wysłany.');
-
-
   });
 });
