@@ -1,17 +1,17 @@
 /// <reference types="cypress" />
 import { testData } from "../support/data/testData";
+import { ageForm } from "../support/pageobjects/ageForm";
 import { applicationForm } from "../support/pageobjects/applicationForm";
 
 describe('Form Validation', () => {
   beforeEach(() => {
     cy.handleExceptions(); 
     cy.visit('/form.html'); 
+
+    ageForm.completeAgeVerification(testData.birthDate.day, testData.birthDate.month, testData.birthDate.year);
   });
 
   it('should fill out and submit the form successfully', () => {
-    applicationForm.clickAcceptCookies();
-    applicationForm.enterBirthDate(testData.birthDate.day, testData.birthDate.month, testData.birthDate.year);
-    applicationForm.clickAcceptAgeBtn();
     applicationForm.clickShowFormPageBtn();
     applicationForm.selectAwardHeadphones();
     applicationForm.enterCodeNumber(testData.capNumber);

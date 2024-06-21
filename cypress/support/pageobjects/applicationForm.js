@@ -1,8 +1,3 @@
-const acceptCookiesBtn = '#ensBtnYes';
-const ageDay = '.age-day';
-const ageMonth = '.age-month';
-const ageYear = '.age-year';
-const acceptAgeBtn = 'button[type="submit"].btn-accept-age';
 const showFormPageBtn = 'a.btn.btn-primary[data-show-form-page]';
 const awardHeadphones = '#award-headphones';
 const codeNumber = '#code-number';
@@ -16,20 +11,6 @@ const submitBtn = 'button[type="submit"]';
 const successMessage = 'h1.banner-title';
 
 export const applicationForm = {
-  clickAcceptCookies: function () {
-    cy.get(acceptCookiesBtn).click();
-  },
-
-  enterBirthDate: function (day, month, year) {
-    cy.get(ageDay).click().type(day);
-    cy.get(ageMonth).click().type(month);
-    cy.get(ageYear).click().type(year);
-  },
-
-  clickAcceptAgeBtn: function () {
-    cy.get(acceptAgeBtn).click();
-  },
-
   clickShowFormPageBtn: function () {
     cy.get(showFormPageBtn).first().click();
   },
