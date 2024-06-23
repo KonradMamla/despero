@@ -8,7 +8,7 @@ export const testData = {
       firstName: 'Konrad',
       lastName: 'Mamla',
       email: 'example@gmail.com',
-      phone: '730 060 156'
+      phone: '730060156',
     },
     capNumber: 'Y59PYL19BH'
   };  
