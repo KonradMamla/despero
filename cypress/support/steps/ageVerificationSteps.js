@@ -1,5 +1,5 @@
-import { ageFormElements } from '../pageElements/ageFormElements';
-import { testData } from '../data/testData';
+import { ageFormElements } from "../pages/AgeFormElements";
+import { testData } from "../data/testData";
 
 export const ageVerificationSteps = {
   clickAcceptCookies() {
@@ -18,8 +18,12 @@ export const ageVerificationSteps = {
 
   completeAgeVerification() {
     this.clickAcceptCookies();
-    this.enterBirthDate(testData.birthDate.day, testData.birthDate.month, testData.birthDate.year);
+    this.enterBirthDate(
+      testData.birthDate.day,
+      testData.birthDate.month,
+      testData.birthDate.year
+    );
     this.clickAcceptAgeBtn();
-    cy.url().should('eq', 'https://promo.desperados.com/');
+    cy.url().should("eq", "https://promo.desperados.com/");
   },
 };

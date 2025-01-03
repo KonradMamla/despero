@@ -29,4 +29,3 @@ Cypress.Commands.add('handleExceptions', () => {
       return false;
     });
   });
-  

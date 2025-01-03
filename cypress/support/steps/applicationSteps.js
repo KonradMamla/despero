@@ -1,17 +1,20 @@
-import { applicationFormElements } from '../pageElements/applicationFormElements';
-import { testData } from '../data/testData';
+import { applicationFormElements } from "../pages/ApplicationFormElements";
+import { testData } from "../data/testData";
 
 export const applicationSteps = {
   clickShowFormPageBtn() {
     cy.get(applicationFormElements.showFormPageBtn).first().click();
+    return this;
   },
 
   selectAwardHeadphones() {
     cy.get(applicationFormElements.awardHeadphones).click();
+    return this;
   },
 
   enterCodeNumber(code) {
     cy.get(applicationFormElements.codeNumber).type(code);
+    return this;
   },
 
   enterPersonalDetails(firstName, lastName, email, phone) {
@@ -19,22 +22,27 @@ export const applicationSteps = {
     cy.get(applicationFormElements.lastNameInput).type(lastName);
     cy.get(applicationFormElements.emailInput).type(email);
     cy.get(applicationFormElements.phoneInput).type(phone);
+    return this;
   },
 
   checkAdulthoodStatement() {
     cy.get(applicationFormElements.adulthoodStatement).check({ force: true });
+    return this;
   },
 
   checkPaymentStatement() {
     cy.get(applicationFormElements.paymentStatement).check({ force: true });
+    return this;
   },
 
   submitForm() {
     cy.get(applicationFormElements.submitBtn).click();
+    return this;
   },
 
   verifySuccessMessage(message) {
-    cy.get(applicationFormElements.successMessage).should('contain', message);
+    cy.get(applicationFormElements.successMessage).should("contain", message);
+    return this;
   },
 
   fillOutForm() {
@@ -49,5 +57,6 @@ export const applicationSteps = {
     );
     this.checkAdulthoodStatement();
     this.checkPaymentStatement();
+    return this;
   },
 };

@@ -1,23 +1,23 @@
 /// <reference types="cypress" />
 
 import { ageVerificationSteps } from '../support/steps/ageVerificationSteps';
-import { applicationSteps } from '../support/steps/applicationSteps';
 
-describe('Form Validation', () => {
+describe("Form Validation", () => {
   beforeEach(() => {
-    cy.handleExceptions(); 
-    cy.visit('/form.html'); 
+    cy.handleExceptions();
+    cy.visit("/form.html");
   });
 
-  it('should fill out and submit the form successfully', () => {
+  it("should fill out and submit the form successfully", () => {
     // Given
-    ageVerificationSteps.completeAgeVerification();
+    ageVerificationSteps
+      .completeAgeVerification()
 
-    // When
-    applicationSteps.fillOutForm();
-    applicationSteps.submitForm();
+      // When
+      .fillOutForm()
+      .submitForm()
 
-    // Then
-    applicationSteps.verifySuccessMessage('Twój formularz został wysłany.');
+      // Then
+      .verifySuccessMessage("Twój formularz został wysłany.");
   });
 });
