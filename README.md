@@ -1,6 +1,6 @@
 # Cypress Login And Inventory Page Tests
-This repository contains a Cypress test script for validating and submitting a form on the Desperados promotion page [desperados](https://promo.desperados.com/form.html)
-
+This repository contains a Cypress test script for validating and submitting a form on the Desperados promotion page [desperados](https://promo.desperados.com/form.html).  
+The project was created using the BDD (Behavior-Driven Development) approach. Test scenarios are written in a manner that describes the system's behavior from the end user's perspective.
 
 ## Table of Contents
 
